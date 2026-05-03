@@ -8,6 +8,15 @@ type Props = {
   }>;
 };
 
+type ListingSourceItem = {
+  id: string;
+  sourceType: "AIRBNB";
+  icalUrl: string;
+  externalListingName: string | null;
+  isActive: boolean;
+  lastSyncedAt: Date | null;
+};
+
 export default async function AdminEditListingPage({ params }: Props) {
   const { id } = await params;
 
@@ -51,7 +60,7 @@ export default async function AdminEditListingPage({ params }: Props) {
     allowEvents: listing.allowEvents,
     cancellationPolicy: listing.cancellationPolicy || null,
 
-    sources: listing.sources.map((source) => ({
+    sources: listing.sources.map((source: ListingSourceItem) => ({
       ...source,
       lastSyncedAt: source.lastSyncedAt?.toISOString() || null,
     })),
