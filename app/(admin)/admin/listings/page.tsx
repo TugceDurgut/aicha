@@ -1,7 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import AdminListingsTable from "@/components/AdminListingsTable";
 import Link from "next/link";
-import { Prisma } from "@prisma/client";
 
 type ListingListItem = {
   id: string;
@@ -9,8 +8,8 @@ type ListingListItem = {
   slug: string;
   city: string | null;
   district: string | null;
-  basePrice: Prisma.Decimal;
-  cleaningFee: Prisma.Decimal | null;
+  basePrice: { toString: () => string };
+  cleaningFee: { toString: () => string } | null;
   isActive: boolean;
   images: {
     id: string;
