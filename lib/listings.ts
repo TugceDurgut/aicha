@@ -1,4 +1,3 @@
-import { AvailabilityStatus } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
 
 type GetAllListingsParams = {
@@ -21,7 +20,7 @@ export async function getAllListings({
             availability: {
               none: {
                 status: {
-                  in: [AvailabilityStatus.BOOKED, AvailabilityStatus.BLOCKED],
+                  in: ["BOOKED", "BLOCKED"],
                 },
                 date: {
                   gte: new Date(startDate),
