@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { getDatesBetween, normalizeDate, parseIcsEvents } from "@/lib/ical";
+import { Prisma } from "@prisma/client";
 
 type Props = {
   params: Promise<{
@@ -57,8 +58,7 @@ export async function POST(_: Request, { params }: Props) {
         ]),
       ).values(),
     );
-
-    await prisma.$transaction(async (tx) => {
+    await prisma.$transaction(async (tx: Prisma.TransactionClient) => {
       await tx.listingAvailability.deleteMany({
         where: {
           listingId: id,
