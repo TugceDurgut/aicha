@@ -8,6 +8,16 @@ type Params = {
   }>;
 };
 
+type Image = {
+  id: string;
+  createdAt: Date;
+  listingId: string;
+  url: string;
+  alt: string | null;
+  sortOrder: number;
+  isCover: boolean;
+};
+
 export async function PATCH(_: Request, { params }: Params) {
   try {
     const { id, imageId } = await params;
@@ -79,7 +89,7 @@ export async function DELETE(_: Request, { params }: Params) {
       },
     });
 
-    const hasCover = remainingImages.some((img) => img.isCover);
+    const hasCover = remainingImages.some((img: Image) => img.isCover);
 
     if (!hasCover && remainingImages.length > 0) {
       await prisma.listingImage.update({
