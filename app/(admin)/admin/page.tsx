@@ -15,6 +15,13 @@ type ReservationItem = {
   };
 };
 
+type GroupedStat = {
+  status: ReservationStatus;
+  _count: {
+    status: number;
+  };
+};
+
 export default async function AdminPage() {
   const [reservations, groupedStats, newMessagesCount] = await Promise.all([
     prisma.bookingRequest.findMany({
@@ -51,7 +58,7 @@ export default async function AdminPage() {
     CANCELLED: 0,
   };
 
-  groupedStats.forEach((item) => {
+  groupedStats.forEach((item: GroupedStat) => {
     const count = item._count.status;
     stats[item.status] = count;
     stats.total += count;
