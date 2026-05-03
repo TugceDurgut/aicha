@@ -1,0 +1,14 @@
+{"time":"2026-01-18T10:52:18.559Z","type":"RECAPTCHA_CHECK","ip":"::1","email":"durgutayca@hotmail.com","score":0.9,"success":true}
+{"time":"2026-01-18T10:52:20.863Z","type":"MAIL_SENT","ip":"::1","email":"durgutayca@hotmail.com","name":"denem","startDate":"18.01.2026","endDate":"19.01.2026"}
+{"time":"2026-01-18T10:57:10.337Z","type":"RECAPTCHA_CHECK","ip":"::1","email":"durgutayca@hotmail.com","score":0.9,"success":true}
+{"time":"2026-01-18T10:57:12.599Z","type":"MAIL_SENT","ip":"::1","email":"durgutayca@hotmail.com","name":"BU YENİ","startDate":"18.01.2026","endDate":"19.01.2026"}
+{"time":"2026-03-28T13:02:55.199Z","type":"BOOKING_CREATED","ip":"::1","email":"durgutgc@gmail.com","name":"tuğçe","startDate":"2026-03-15","endDate":"2026-03-17","listingId":"cmn9ccvsp0002q1at420oyu5v","guestCount":2}
+{"time":"2026-03-28T13:02:58.262Z","type":"MAIL_SENT","ip":"::1","email":"durgutgc@gmail.com","name":"tuğçe","startDate":"2026-03-15","endDate":"2026-03-17","listingId":"cmn9ccvsp0002q1at420oyu5v","guestCount":2}
+{"time":"2026-03-28T13:24:57.961Z","type":"BOOKING_CREATED","ip":"::1","email":"test","name":"tuğçe","startDate":"2026-03-02","endDate":"2026-03-22","listingId":"cmna4n36v0000q1p3gvuc4d9w","guestCount":1}
+{"time":"2026-03-28T13:25:00.640Z","type":"MAIL_SENT","ip":"::1","email":"test","name":"tuğçe","startDate":"2026-03-02","endDate":"2026-03-22","listingId":"cmna4n36v0000q1p3gvuc4d9w","guestCount":1}
+{"time":"2026-03-28T16:41:26.204Z","type":"BOOKING_CREATED","ip":"::1","email":"tugcedurgut@gmail.com","name":"tuğçe","startDate":"2026-03-29","endDate":"2026-04-01","listingId":"cmnaigste000sq177sfzp58vi","guestCount":1}
+{"time":"2026-03-28T16:41:28.723Z","type":"MAIL_SENT","ip":"::1","email":"tugcedurgut@gmail.com","name":"tuğçe","startDate":"2026-03-29","endDate":"2026-04-01","listingId":"cmnaigste000sq177sfzp58vi","guestCount":1}
+{"time":"2026-03-28T16:42:29.473Z","type":"BOOKING_CREATED","ip":"::1","email":"testtugce@gmail.com","name":"tuğçe","startDate":"2026-03-31","endDate":"2026-04-02","listingId":"cmnaiclyg0000q1776clwmkta","guestCount":4}
+{"time":"2026-03-28T16:42:31.864Z","type":"MAIL_SENT","ip":"::1","email":"testtugce@gmail.com","name":"tuğçe","startDate":"2026-03-31","endDate":"2026-04-02","listingId":"cmnaiclyg0000q1776clwmkta","guestCount":4}
+{"time":"2026-03-28T17:20:30.433Z","type":"BOOKING_CREATED","ip":"::1","email":"jgjggg","name":"tuğçe","startDate":"2026-04-08","endDate":"2026-04-09","listingId":"cmnaiclyg0000q1776clwmkta","guestCount":1}
+{"time":"2026-03-28T17:20:33.343Z","type":"MAIL_SENT","ip":"::1","email":"jgjggg","name":"tuğçe","startDate":"2026-04-08","endDate":"2026-04-09","listingId":"cmnaiclyg0000q1776clwmkta","guestCount":1}

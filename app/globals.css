@@ -1,10 +1,35 @@
 @import "tailwindcss";
 
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap");
+
+html {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+.font-serif {
+  font-family: "Playfair Display", serif;
+}
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
 
+/* Date input icon & text color */
+input[type="date"] {
+  color: #c8a44d;
+  /* altın */
+}
+
+/* Placeholder-like text (browser date text) */
+input[type="date"]::-webkit-datetime-edit {
+  color: #c8a44d;
+}
+
+/* Calendar icon */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(72%) sepia(25%) saturate(350%) hue-rotate(5deg);
+  cursor: pointer;
+}
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -23,4 +48,68 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+/* DayPicker */
+.rdp-aicha {
+  --rdp-accent-color: #373889;
+  --rdp-accent-background-color: #eef0ff;
+  width: 100%;
+}
+
+.rdp-aicha .rdp-day_button {
+  border-radius: 8px !important;
+  transition: all 0.2s ease !important;
+}
+
+.rdp-aicha .rdp-day_button:hover {
+  background-color: #eef0ff !important;
+  color: #373889 !important;
+}
+
+.rdp-aicha .rdp-day_button:focus-visible {
+  outline: 2px solid #373889 !important;
+  outline-offset: 2px !important;
+}
+
+.rdp-aicha .rdp-chevron {
+  fill: #373889 !important;
+  color: #373889 !important;
+}
+
+.rdp-aicha .rdp-button_previous,
+.rdp-aicha .rdp-button_next {
+  color: #373889 !important;
+}
+
+.rdp-aicha .rdp-button_previous:hover,
+.rdp-aicha .rdp-button_next:hover {
+  background-color: #eef0ff !important;
+  border-radius: 8px !important;
+}
+
+.rdp-aicha .rdp-caption_label {
+  color: #373889 !important;
+  font-weight: 600 !important;
+}
+@media (max-width: 420px) {
+  .rdp-aicha {
+    --rdp-day-width: 32px;
+    --rdp-day-height: 32px;
+    --rdp-day_button-width: 32px;
+    --rdp-day_button-height: 32px;
+    font-size: 13px;
+  }
+
+  .rdp-aicha .rdp-month_grid {
+    width: 100%;
+  }
+
+  .rdp-aicha .rdp-weekday {
+    font-size: 11px;
+  }
+
+  .rdp-aicha .rdp-day_button {
+    width: 32px !important;
+    height: 32px !important;
+  }
 }
