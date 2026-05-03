@@ -66,7 +66,7 @@ export default async function VillasPage({ searchParams }: Props) {
     title: item.title,
     location: [item.district, item.city].filter(Boolean).join(", "),
     image:
-      item.images.find((img) => img.isCover)?.url ||
+      item.images.find((img: Image) => img.isCover)?.url ||
       item.images[0]?.url ||
       "/images/hero.png",
     priceFrom: Number(item.basePrice),

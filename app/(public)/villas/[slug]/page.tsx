@@ -72,7 +72,7 @@ export default async function VillaDetailPage({ params }: Props) {
   );
 
   const coverImage =
-    listing.images.find((img) => img.isCover)?.url ||
+    listing.images.find((img: ListingImage) => img.isCover)?.url ||
     listing.images[0]?.url ||
     "/images/hero.png";
 

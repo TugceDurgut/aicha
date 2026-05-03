@@ -35,7 +35,7 @@ export default async function HomePage() {
     location: [item.district, item.city].filter(Boolean).join(", "),
     priceFrom: Number(item.basePrice),
     image:
-      item.images.find((img) => img.isCover)?.url ||
+      item.images.find((img: Image) => img.isCover)?.url ||
       item.images[0]?.url ||
       "/images/hero.png",
     tag: "Popüler",
