@@ -10,6 +10,7 @@ type ListingListItem = {
   city: string | null;
   district: string | null;
   basePrice: Prisma.Decimal;
+  cleaningFee: Prisma.Decimal | null;
   isActive: boolean;
   images: {
     id: string;
@@ -35,6 +36,7 @@ export default async function AdminListingsPage() {
   const safeListings = listings.map((listing: ListingListItem) => ({
     ...listing,
     basePrice: listing.basePrice.toString(),
+    cleaningFee: listing.cleaningFee?.toString() || null,
   }));
 
   return (
