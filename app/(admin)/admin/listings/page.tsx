@@ -1,6 +1,22 @@
 import { prisma } from "@/lib/prisma";
 import AdminListingsTable from "@/components/AdminListingsTable";
 import Link from "next/link";
+import { Prisma } from "@prisma/client";
+
+type ListingListItem = {
+  id: string;
+  title: string;
+  slug: string;
+  city: string | null;
+  district: string | null;
+  basePrice: Prisma.Decimal;
+  isActive: boolean;
+  images: {
+    id: string;
+    url: string;
+    isCover: boolean;
+  }[];
+};
 
 export default async function AdminListingsPage() {
   const listings = await prisma.listing.findMany({
@@ -16,10 +32,9 @@ export default async function AdminListingsPage() {
     },
   });
 
-  const safeListings = listings.map((listing) => ({
+  const safeListings = listings.map((listing: ListingListItem) => ({
     ...listing,
     basePrice: listing.basePrice.toString(),
-    cleaningFee: listing.cleaningFee?.toString() || null,
   }));
 
   return (
