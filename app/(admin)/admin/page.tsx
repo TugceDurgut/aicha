@@ -1,6 +1,20 @@
 import { prisma } from "@/lib/prisma";
 import AdminDashboard from "@/components/AdminDashboard";
 
+type ReservationStatus = "NEW" | "CONTACTED" | "CONFIRMED" | "CANCELLED";
+
+type ReservationItem = {
+  id: string;
+  fullName: string;
+  checkIn: Date;
+  checkOut: Date;
+  createdAt: Date;
+  status: ReservationStatus;
+  listing: {
+    title: string;
+  };
+};
+
 export default async function AdminPage() {
   const [reservations, groupedStats, newMessagesCount] = await Promise.all([
     prisma.bookingRequest.findMany({
@@ -43,7 +57,7 @@ export default async function AdminPage() {
     stats.total += count;
   });
 
-  const safeReservations = reservations.map((item) => ({
+  const safeReservations = reservations.map((item: ReservationItem) => ({
     id: item.id,
     fullName: item.fullName,
     checkIn: item.checkIn.toISOString(),
