@@ -1,5 +1,16 @@
 import { prisma } from "@/lib/prisma";
 
+type ListingListItem = {
+  id: string;
+  title: string;
+  slug: string;
+  city: string | null;
+  district: string | null;
+  basePrice: { toString: () => string };
+  cleaningFee: { toString: () => string } | null;
+  isActive: boolean;
+};
+
 export async function getAdminListings() {
   const listings = await prisma.listing.findMany({
     orderBy: {
@@ -7,7 +18,7 @@ export async function getAdminListings() {
     },
   });
 
-  return listings.map((item) => ({
+  return listings.map((item: ListingListItem) => ({
     ...item,
     basePrice: Number(item.basePrice),
     cleaningFee: item.cleaningFee ? Number(item.cleaningFee) : null,
