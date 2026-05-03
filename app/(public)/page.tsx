@@ -2,9 +2,33 @@ import AccommodationSlider from "@/components/AccommodationSlider";
 import BookingBar from "@/components/BookingBar";
 import { getAllListings } from "@/lib/listings";
 import Link from "next/link";
+
+type Image = {
+  id: string;
+  createdAt: Date;
+  listingId: string;
+  url: string;
+  alt: string | null;
+  sortOrder: number;
+  isCover: boolean;
+};
+type AllListings = {
+  images: Image[];
+  id: string;
+  createdAt: Date;
+  updatedAt: Date;
+  slug: string;
+  title: string;
+  district: string | null;
+  city: string | null;
+  basePrice: { toString: () => string };
+  guestCapacity: number;
+  bedroomCount: number | null;
+};
+
 export default async function HomePage() {
   const listings = await getAllListings();
-  const sliderItems = listings.map((item) => ({
+  const sliderItems = listings.map((item: AllListings) => ({
     id: item.id,
     slug: item.slug,
     title: item.title,

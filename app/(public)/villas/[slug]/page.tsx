@@ -9,6 +9,28 @@ type Props = {
     slug: string;
   }>;
 };
+type Availability = {
+  id: string;
+  createdAt: Date;
+  updatedAt: Date;
+  listingId: string;
+  date: Date;
+  minNights: number | null;
+};
+type ListingImage = {
+  id: string;
+  createdAt: Date;
+  listingId: string;
+  url: string;
+  alt: string | null;
+  sortOrder: number;
+  isCover: boolean;
+};
+
+type Amenities = {
+  id: string;
+  amenity: { name: string };
+};
 
 export default async function VillaDetailPage({ params }: Props) {
   const { slug } = await params;
@@ -45,7 +67,9 @@ export default async function VillaDetailPage({ params }: Props) {
     notFound();
   }
 
-  const disabledDates = listing.availability.map((item) => new Date(item.date));
+  const disabledDates = listing.availability.map(
+    (item: Availability) => new Date(item.date),
+  );
 
   const coverImage =
     listing.images.find((img) => img.isCover)?.url ||
@@ -88,7 +112,7 @@ export default async function VillaDetailPage({ params }: Props) {
           <div>
             <ListingGallery
               title={listing.title}
-              images={listing.images.map((img) => ({
+              images={listing.images.map((img: ListingImage) => ({
                 id: img.id,
                 url: img.url,
                 alt: img.alt || listing.title,
@@ -164,7 +188,7 @@ export default async function VillaDetailPage({ params }: Props) {
               </h2>
 
               <div className="mt-4 flex flex-wrap gap-3">
-                {listing.amenities.map((item) => (
+                {listing.amenities.map((item: Amenities) => (
                   <div
                     key={item.id}
                     className="rounded-full bg-[#F5F6FA] px-4 py-2 text-sm text-[#1F2937]"

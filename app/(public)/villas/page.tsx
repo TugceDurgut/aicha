@@ -11,6 +11,42 @@ type Props = {
   }>;
 };
 
+type Image = {
+  id: string;
+  createdAt: Date;
+  listingId: string;
+  url: string;
+  alt: string | null;
+  sortOrder: number;
+  isCover: boolean;
+};
+type AllListings = {
+  images: Image[];
+  id: string;
+  createdAt: Date;
+  updatedAt: Date;
+  slug: string;
+  title: string;
+  district: string | null;
+  city: string | null;
+  basePrice: { toString: () => string };
+  guestCapacity: number;
+  bedroomCount: number | null;
+  bathroomCount: number | null;
+};
+
+type MappedListing = {
+  id: string;
+  slug: string;
+  title: string;
+  location: string;
+  image: string;
+  priceFrom: number;
+  guestCapacity: number;
+  bedroomCount: number | null;
+  bathroomCount: number | null;
+};
+
 export default async function VillasPage({ searchParams }: Props) {
   const params = await searchParams;
 
@@ -24,7 +60,7 @@ export default async function VillasPage({ searchParams }: Props) {
     endDate,
   });
 
-  const mappedListings = listings.map((item) => ({
+  const mappedListings = listings.map((item: AllListings) => ({
     id: item.id,
     slug: item.slug,
     title: item.title,
@@ -69,7 +105,7 @@ export default async function VillasPage({ searchParams }: Props) {
         <div className="mx-auto max-w-7xl px-6">
           {mappedListings.length > 0 ? (
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-              {mappedListings.map((it) => (
+              {mappedListings.map((it: MappedListing) => (
                 <Link key={it.id} href={`/villas/${it.slug}`}>
                   <ListingCard item={it} />
                 </Link>
