@@ -659,11 +659,16 @@ export default function AdminEditListingForm({ listing, amenities }: Props) {
               multiple
               className="hidden"
               onChange={async (e) => {
-                const files = Array.from(e.target.files || []);
+                const input = e.currentTarget;
+                const files = Array.from(input.files || []);
+
                 for (const file of files) {
                   await handleUpload(file);
                 }
-                e.currentTarget.value = "";
+
+                if (input) {
+                  input.value = "";
+                }
               }}
             />
           </label>
