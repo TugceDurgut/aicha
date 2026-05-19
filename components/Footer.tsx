@@ -22,7 +22,7 @@ export default function Footer() {
           <div className="md:col-span-2 flex items-center justify-center">
             <div className="flex flex-wrap text-center justify-center gap-4 md:grid md:grid-cols-4 md:gap-5">
               <Link
-                href="/HOME"
+                href="/"
                 className="text-white/75 hover:text-white transition"
               >
                 Ana Sayfa
