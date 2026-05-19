@@ -40,8 +40,18 @@ export default function BookingRequestForm({
     [disabledDates],
   );
 
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  const phoneRegex = /^(?:\+90|0)?[5][0-9]{9}$/;
+
   const isDisabled =
-    !checkIn || !checkOut || !guestCount || !fullName || !email || loading;
+    !checkIn ||
+    !checkOut ||
+    !guestCount ||
+    !fullName ||
+    !email ||
+    !phone ||
+    loading;
 
   const inputClass =
     "w-full px-4 py-3 rounded-xl bg-white/95 text-sm text-left text-[#4B5563] shadow-[0_8px_24px_rgba(0,0,0,0.08)] transition outline-none focus:ring-1 focus:ring-[#373889]/30 hover:shadow-[0_12px_32px_rgba(0,0,0,0.12)]";
@@ -123,6 +133,17 @@ export default function BookingRequestForm({
 
   const handleSubmit = async () => {
     try {
+      if (!emailRegex.test(email.trim())) {
+        setErrorMessage("Geçerli bir e-posta adresi girin.");
+        return;
+      }
+
+      const normalizedPhone = phone.replace(/\s/g, "");
+
+      if (!phoneRegex.test(normalizedPhone)) {
+        setErrorMessage("Geçerli bir telefon numarası girin.");
+        return;
+      }
       setLoading(true);
       setSuccessMessage("");
       setErrorMessage("");
@@ -276,6 +297,8 @@ export default function BookingRequestForm({
 
         <input
           type="tel"
+          inputMode="numeric"
+          maxLength={11}
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
           placeholder="Telefon"

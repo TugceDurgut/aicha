@@ -10,11 +10,24 @@ export default function ContactPage() {
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const phoneRegex = /^(?:\+90|0)?[5][0-9]{9}$/;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     try {
+      if (!emailRegex.test(email.trim())) {
+        setErrorMessage("Geçerli bir e-posta adresi girin.");
+        return;
+      }
+
+      const normalizedPhone = phone.replace(/\s/g, "");
+
+      if (!phoneRegex.test(normalizedPhone)) {
+        setErrorMessage("Geçerli bir telefon numarası girin.");
+        return;
+      }
       setLoading(true);
       setSuccessMessage("");
       setErrorMessage("");
